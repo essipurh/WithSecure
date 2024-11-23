@@ -1,11 +1,15 @@
 # for testing purposes
 import logging
+import os
 from datetime import datetime
-from src.batching.batch_processor import batches_generator
-from src.utils.data_utils import generate_mock_data
+from batching.batch_processor import batches_generator
+from utils.data_utils import generate_mock_data
 
+# TODO: proper logging set up
 logging.basicConfig(
-    filename=f"batches_test_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.txt",
+    filename=os.path.join(
+        "logs", f"batches_test_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.log"
+    ),
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )

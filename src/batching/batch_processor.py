@@ -23,7 +23,7 @@ def batches_generator(records: List[str]) -> Generator:
       A generator of batches, where each batch is a list of records (strings).
     """
 
-    current_batch = []
+    current_batch: list[str] = []
     current_batch_size = 0
 
     for record in records:
