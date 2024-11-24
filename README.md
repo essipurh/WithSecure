@@ -16,8 +16,6 @@ The output has following restrictions:
 - Discards records exceeding size limits.
 - Maintains the order of records.
 
---
-
 ## Usage
 
 **To install using venv:**
@@ -48,7 +46,7 @@ The output is a list of batches, where each batch is an array of records in the 
 To test the batching_generator, src/examples/example.py has an example, which takes in streaming mock data and logs
 processing of the data. The script create a logs/ directory where logging files can be found. Example of a log file's contents:
 
-2024-11-24 13:47:47,943 - INFO - Batch 104: 9 records, 4984360 bytes, 984052 maximum record size.
+2024-11-24 13:47:47,943 - INFO - Batch 104: 9 records, 4984360 bytes, 984052 maximum record size
 2024-11-24 13:47:48,235 - WARNING - Record discarded. Record size: 1182243.
 2024-11-24 13:47:48,403 - WARNING - Record discarded. Record size: 1122240.
 2024-11-24 13:47:48,585 - WARNING - Record discarded. Record size: 1199934.
