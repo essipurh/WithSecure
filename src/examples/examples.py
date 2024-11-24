@@ -1,9 +1,10 @@
+# example usage
 # for testing purposes
 import logging
 import os
 from datetime import datetime
 from batching.batch_processor import batches_generator
-from utils.data_utils import generate_mock_data
+from mock_data_generator import generate_mock_data
 
 # TODO: proper logging set up
 logging.basicConfig(
