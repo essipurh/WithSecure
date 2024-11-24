@@ -61,3 +61,26 @@ def test_non_valid_string_handling():
     assert len(batches[0]) == 2
     assert valid_string in batches[0]
     assert invalid_string not in batches[0]
+
+
+def test_record_order_maintained():
+    records = [str(i) for i in range(600)]
+    batches = list(batches_generator(records))
+
+    assert len(batches) == 2
+    assert len(batches[0]) == 500
+    assert batches[0] == [str(i) for i in range(500)]
+    assert batches[1] == [str(i) for i in range(500, 600)]
+
+
+def test_record_order_maintained_discarding_invalid_record():
+    records = [str(i) for i in range(600)]
+    records.insert(3, "a" * 1_048_577)
+    records.insert(588, b"\xbc not valid record")
+    batches = list(batches_generator(records))
+
+    assert len(batches) == 2
+    assert len(batches[0]) == 500
+    assert len(batches[1]) == 100
+    assert batches[0] == [str(i) for i in range(500)]
+    assert batches[1] == [str(i) for i in range(500, 600)]

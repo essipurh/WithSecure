@@ -30,7 +30,7 @@ def batches_generator(records: List[str]) -> Generator:
     for record in records:
         try:
             record_size = len(
-                record.encode("utf-8")
+                record.encode("utf-8", errors="replace")
             )  # the records are assumed to be strings utf-8, which is not ideal.
         except Exception as e:
             logger.error(f"Failed to process record: {record}. Error: {e}")
