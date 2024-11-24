@@ -21,34 +21,33 @@ The output is a list of batches, where each batch is an array of records in the 
 ## Usage
 
 **Install using venv and requirements.txt:**
+
 - run:
+
   ```
   python -m venv .venv
-  
+
   # activate .venv
   # cmd.exe
   venv\Scripts\activate.bat
-  
+
   # PowerShell
   venv\Scripts\Activate.ps1
-  
+
   # Linux/MacOS
   source myvenv/bin/activate
-  
+
   # to install requirements
   pip install -r requirements.txt
   ```
-**Install using setup.py:**
-- run:
-```pip install -e .```
 
 **Run example code and tests**
+
 - To run an example (see more details below):
-  `python src/examples/example.py`
+  `python -m examples.examples`
 
 - To run tests:
   `pytest .`
-
 
 ## Example
 

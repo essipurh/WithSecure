@@ -1,7 +1,7 @@
 # example usage
 # for testing purposes
 from batching.batch_processor import batches_generator
-from mock_data_generator import generate_mock_data
+from .mock_data_generator import generate_mock_data
 from batching.logging_config import logger
 
 
