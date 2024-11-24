@@ -45,19 +45,3 @@ def batches_generator(records: List[str]) -> Generator:
 
     if current_batch:
         yield current_batch
-
-
-# not sure if needed. Testing uses the generator..
-def create_batches(records: List[str]) -> List[List[str]]:
-    """
-    Creates a list of batches, which are list or input records (string).
-    Parameters
-    -----------
-    records : list[str]
-      List of records (strings).
-    Returns
-    -------
-    list[list[str]]
-      A list of batches, where each batch is a list of records (strings).
-    """
-    return list(batches_generator(records))
