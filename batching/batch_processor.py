@@ -1,7 +1,7 @@
 from batching.logging_config import logger
 from typing import Generator, List
 
-# TODO: maybe add logger.debug
+# TODO: Now expects records are strings utf-8, which is not ideal. sys.getsizeof(record) not ideal either
 MAX_RECORD_SIZE = 1_048_576  # 1 MB
 MAX_BATCH_SIZE = 5_242_880  # 5 MB
 MAX_RECORDS_PER_BATCH = 500
@@ -31,7 +31,7 @@ def batches_generator(records: List[str]) -> Generator:
         try:
             record_size = len(
                 record.encode("utf-8")
-            )  # the records are assumed to be strings
+            )  # the records are assumed to be strings utf-8, which is not ideal.
         except Exception as e:
             logger.error(f"Failed to process record: {record}. Error: {e}")
             continue
