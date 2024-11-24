@@ -18,6 +18,10 @@ The output is a list of batches, where each batch is an array of records in the 
 - Discards records exceeding size limits.
 - Maintains the order of records.
 
+## Future improvements
+
+Programs expects utf-8 encoded strings, which is not ideal. In the future needs more explicit encoding strategy or maybe to use chardet to auto-detect encoding.
+
 ## Usage
 
 **Install using venv and requirements.txt:**
