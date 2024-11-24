@@ -12,6 +12,8 @@ def process_test_stream_data_to_batches():
     for i, batch in enumerate(batches_generator(mock_records_stream)):
         batch_size = sum(len(record.encode("utf-8")) for record in batch)
         max_size = max(len(record.encode("utf-8")) for record in batch)
+
+        # perhaps unnecessary
         if batch_size > 5_242_880 or max_size > 1_048_576:
             logger.warning(
                 f"SIZE EXCEEDED: batch size: {batch_size}, maximum record size: {max_size}"

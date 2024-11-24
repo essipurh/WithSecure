@@ -45,4 +45,4 @@ def test_several_batches():
     assert len(batches) == 2
     assert len(batches[0]) == 500
     assert len(batches[1]) == 100  # the length of the input list is 600 + 1
-    assert batches[-1][-1] != too_big
+    assert batches[-1][-1] != too_big # too_big string discarded because its size exceeds 1MB

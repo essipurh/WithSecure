@@ -1,6 +1,7 @@
+from batching.logging_config import logger
 from typing import Generator, List
 
-# TODO: logging for discarded records? to use deque instead of list?
+# TODO: maybe add logger.debug
 MAX_RECORD_SIZE = 1_048_576  # 1 MB
 MAX_BATCH_SIZE = 5_242_880  # 5 MB
 MAX_RECORDS_PER_BATCH = 500
@@ -27,10 +28,16 @@ def batches_generator(records: List[str]) -> Generator:
     current_batch_size = 0
 
     for record in records:
-        record_size = len(
-            record.encode("utf-8")
-        )  # the records are assumed to be strings, could use sys.getsizeof if non string
+        try:
+            record_size = len(
+                record.encode("utf-8")
+            )  # the records are assumed to be strings
+        except Exception as e:
+            logger.error(f"Failed to process record: {record}. Error: {e}")
+            continue
+
         if record_size > MAX_RECORD_SIZE:
+            logger.warning(f"Record discarded. Record size: {record_size}.")
             continue
 
         if (record_size + current_batch_size > MAX_BATCH_SIZE) or (
