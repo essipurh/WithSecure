@@ -20,7 +20,9 @@ The output is a list of batches, where each batch is an array of records in the 
 
 ## Future improvements
 
-Programs expects utf-8 encoded strings, which is not ideal. In the future needs more explicit encoding strategy or maybe to use chardet to auto-detect encoding.
+- Programs expects utf-8 encoded strings, which is not ideal. In the future needs more explicit encoding strategy or maybe to use chardet to auto-detect encoding.
+- Better logging to handle large .log files. Size-based and/or time-based log rotation
+- Package with Poetry for easier usage.
 
 ## Usage
 
