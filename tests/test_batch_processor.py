@@ -48,3 +48,16 @@ def test_several_batches():
     assert (
         batches[-1][-1] != too_big
     )  # too_big string discarded because its size exceeds 1MB
+
+
+def test_non_valid_string_handling():
+    invalid_string = b"\xbc not valid record"
+    valid_string = "aaaaa"
+
+    records = [valid_string, invalid_string, valid_string]
+    batches = list(batches_generator(records))
+
+    assert len(batches) == 1
+    assert len(batches[0]) == 2
+    assert valid_string in batches[0]
+    assert invalid_string not in batches[0]
